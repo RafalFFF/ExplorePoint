@@ -1,12 +1,17 @@
+import { useContext, useState, } from 'react'
 import NavBar from './components/navBar/NavBar';
 import './App.scss';
+import ContextProvider from './context/Context';
 
+import {AppContext} from './context/Context';
 
 const  App=()=> {
+
+  
   return (
-    <div>
-      <NavBar/>
-    </div>
+    <ContextProvider>
+        <NavBar/>
+    </ContextProvider>
   );
 }
 

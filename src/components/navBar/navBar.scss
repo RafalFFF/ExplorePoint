@@ -1,34 +1,57 @@
 @import '../../App.scss';
 
 
-@keyframes down-rotate {
-	0% {
-		animation-timing-function: cubic-bezier(0.16, -0.88, 0.97, 0.53);
-		transform: translateY(0px);
-	}
-	30% {
-		transform-origin: center;
-		animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
-		transform: translateY(10px);
-	}
-	100% {
-		transform-origin: center;
-		transform: translateY(10px) rotate(-45deg) scale(0.9);
-	}
-}
-
-@keyframes hide {
-	29% {
-		opacity: 1;
-	}
-	30% {
-		opacity: 0;
-	}
-	100% {
-		opacity: 0;
-	}
-}
-
+.navigation__dark-swtich {
+    font-size: 17px;
+    position: relative;
+    display: inline-block;
+    width: 2em;
+    height: 1em;
+  }
+  
+  /* Hide default HTML checkbox */
+  .navigation__dark-swtich input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The navigation__dark-slider */
+  .navigation__dark-slider {
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    background: #9fccfa;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .navigation__dark-slider:before {
+    position: absolute;
+    content: "";
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1em;
+    width: 1em;
+    inset: 0;
+    background-color: white;
+    border-radius: 50px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.4);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  }
+  
+  .navigation__dark-swtich input:checked + .navigation__dark-slider {
+    background: #0974f1;
+  }
+  
+  .navigation__dark-swtich input:focus + .navigation__dark-slider {
+    box-shadow: 0 0 1px #0974f1;
+  }
+  
+  .navigation__dark-swtich input:checked + .navigation__dark-slider:before {
+    transform: translateX(1em);
+  }
 
 .navigation{
     width: 100vw;
@@ -37,6 +60,7 @@
     justify-content: space-between;
     padding: 10px 20px;
     background-color: $piramy-blue;
+    position: relative;
     &__right{
         max-width: 250px;
         justify-content: space-between;
@@ -52,47 +76,73 @@
         color: #fff;
     }
     &__hamburger{
-        path{
-            transition: all 0.6s;
-            &:nth-child(1){
-                transform-origin:bottom;
-                transform:rotatez(0deg) translate(0px,0px)
-            }
-            &:nth-child(2){
-                transform-origin:top;
-                transform:rotatez(0deg)
-            }
-            &:nth-child(3){
-                transform-origin:bottom;
-
-                transform: translate(0px,0px) rotatez(0deg);
-            }
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        display: flex;
+        padding: 0;
+        .line {
+            fill: none;
+            stroke: #fff;
+            stroke-width: 6;
+            transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
+              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+          }
+          .line1 {
+            stroke-dasharray: 60 207;
+            stroke-width: 6;
+          }
+          .line2 {
+            stroke-dasharray: 60 60;
+            stroke-width: 6;
+          }
+          .line3 {
+            stroke-dasharray: 60 207;
+            stroke-width: 6;
+          }
+        &--active{
+          .line1 {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+            stroke-width: 6;
+          }
+           .line2 {
+            stroke-dasharray: 1 60;
+            stroke-dashoffset: -30;
+            stroke-width: 6;
+          }
+           .line3 {
+            stroke-dasharray: 90 207;
+            stroke-dashoffset: -134;
+            stroke-width: 6;
+          }
         }
-        
+       
+
+    }
+    &__left{
+        display: flex;
+        align-items: center;
+        gap: 16px;
+    }
+    &__notifications{
         &:hover{
             cursor: pointer;
         }
-        &--active{
+        svg{
             path{
-                transition: all 0.6s;
-                &:nth-child(1){
-                    transform-origin:bottom;
-                    transform:rotatez(45deg) 
-                }
-                &:nth-child(2){
-                    transform-origin:top;
-                    transform:rotatez(-45deg)
-                }
-                &:nth-child(3){
-                    transform-origin:bottom;
-                    
-                    transform: translate(13.5px,-4.9px) rotatez(45deg);
-                }
-
+                stroke: #fff;
             }
         }
     }
-    &__left{
-
+    &__account{
+        &:hover{
+            cursor: pointer;
+        }
+        svg{
+            path{
+                fill: #fff;
+            }
+        }
     }
 }
