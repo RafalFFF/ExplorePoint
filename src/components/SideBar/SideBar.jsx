@@ -1,10 +1,14 @@
 import './sideBar.scss'
 
 
-const SideBar = ({top})=>{
-    console.log(top);
+const SideBar = ({top, sidebar})=>{
+
+    const sidebarStyles ={
+        top:`${top}px`,
+        height:`calc(100vh - ${top}px`,
+    }   
     return(
-       <div className="sidebar">
+       <div style={sidebarStyles}  className={sidebar ? "sidebar sidebar--active":"sidebar"}>
 
        </div>
     )

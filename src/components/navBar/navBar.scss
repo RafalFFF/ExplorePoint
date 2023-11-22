@@ -55,12 +55,16 @@
 
 .navigation{
     width: 100vw;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: $piramy-blue;
-    position: relative;
+    &__wrapper{
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background-color: $piramy-blue;
+      position: relative;
+      z-index: 10;
+    }
     &__right{
         max-width: 250px;
         justify-content: space-between;
@@ -125,6 +129,43 @@
         align-items: center;
         gap: 16px;
     }
+    &__search-bar{
+      position: relative;
+      display: flex;
+      align-items: center;
+      position: relative;
+      input{
+        padding: 4px 20px;
+        padding-left: 10px;
+        z-index: 1;
+        position: relative;
+        border: none;
+        font-size: 16px;
+        &::placeholder{
+          color: #000;
+        }
+      }
+
+    }
+    &__search-mobile{
+      display: none;
+    }
+    &__search-icon{
+      position: absolute;
+      background-color: transparent;
+      border: none;
+
+      top: 50%;
+      z-index: 2;
+      right: 10px;
+      transform: translateY(-50%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      &:hover{
+        cursor: pointer;
+      }
+    }
     &__notifications{
         &:hover{
             cursor: pointer;
@@ -144,5 +185,46 @@
                 fill: #fff;
             }
         }
+    }
+    @media (max-width: 768px) {
+      &__search-mobile{
+        display: flex;
+      }
+      &__notifications{
+        display: none;
+      }
+      &__search-bar{
+        transform: translateX(-100%);
+        
+        transition: transform .6s;
+        position: absolute;
+        top: 56px;
+        left: 0px;
+        border-bottom: solid 1px black;
+        border-right: solid 1px black;
+        padding: 0px;
+        width: 100%;
+        z-index: 10;
+        input{
+          width: 100%;
+          height: 100%;
+        }
+        &--active{
+          transform: translateX(0%);
+        }
+      }
+      &__right{
+        max-width: fit-content;
+        gap: 20px;
+      }
+    }
+    @media (max-width: 768px){
+      &__wrapper{
+        padding: 10px;
+      }
+      &__site-name{
+        font-size: 18px;
+        line-height: 18px;
+      }
     }
 }
