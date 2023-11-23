@@ -176,7 +176,29 @@
             }
         }
     }
+    &__user-options{
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      bottom: -68px;
+      right: 0px;
+      background-color: #fff;
+      padding: 10px;
+      width: 150px;
+      transition: transform .6s;
+      transform: scaleY(0);
+      transform-origin: top;
+      &--active{
+        transform: scaleY(100%);
+      }
+      span{
+        &:hover{
+          cursor: pointer;
+        }
+      };
+    }
     &__account{
+      position: relative;
         &:hover{
             cursor: pointer;
         }
