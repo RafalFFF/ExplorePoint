@@ -13,13 +13,18 @@
     pointer-events: none;
     transition: opacity .6s;
     &__content{
-        width: 100px;
-        height: 100px;
-        background-color: red;
         position: relative;
     }
     &--active{
         pointer-events: all;
         opacity: 1;
+    }
+    &__close{
+        position: absolute;
+        top: 8px;
+        right: 8px;
+        &:hover{
+            cursor: pointer;
+        }
     }
 }

@@ -1,0 +1,55 @@
+@import '../../App.scss';
+
+.form{
+    max-width: 600px;
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    background-color: #fff;
+    gap: 24px;
+    &__row{
+        position: relative;
+        width: 100%;
+        label{
+            background-color: #fff;
+            padding: 0px 10px;
+            position: absolute;
+            top: 50%;
+            left: 10px;
+            transform: translateY(-50%);        
+            transition: transform .3s , font-size .3s;
+        }
+        input{
+            width: 100%;
+            font-size: 16px;
+            padding: 10px 10px;
+            transition: border .3s;
+            border: solid 2px #9fccfa;
+            outline: none;
+            &:hover{
+                border: solid 2px $piramy-blue;
+            }
+            &:focus{
+                border: solid 2px rgb(0 8 135);
+            }
+        }
+        &:has(input:focus) label {
+            transform: translateY(-24px);
+            font-size: 12px;
+        }
+        button{
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            border-radius: 0px;
+            width: 100%;
+            transition: all .3s;
+            &:hover{
+                cursor: pointer;
+                background-color: $piramy-blue;
+                color: #fff;
+            }
+        }
+    }
+}
