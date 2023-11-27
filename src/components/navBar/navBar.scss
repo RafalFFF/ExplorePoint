@@ -21,9 +21,12 @@
     position: absolute;
     cursor: pointer;
     inset: 0;
-    background: #9fccfa;
+    background: $piramy-blue;
     border-radius: 50px;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    &--dark-mode{
+      background: $piramy-grey;
+    }
   }
   
   .navigation__dark-slider:before {
@@ -58,26 +61,38 @@
     &__wrapper{
       display: flex;
       align-items: center;
+      max-width: 100vw;
       width: 100%;
       justify-content: space-between;
       padding: 10px 20px;
-      background-color: $piramy-blue;
+      background-color: $piramy-grey;
+      box-shadow: 0px 0px 6px 0px $piramy-grey;
       position: relative;
       z-index: 10;
+      transition: background-color .3s;
+      &--dark-mode{
+        background-color: $piramy-blue;
+        box-shadow: 0px 0px 6px 0px $piramy-blue;
+      }
     }
     &__right{
-        max-width: 250px;
+        max-width: fit-content;
+        gap: 40px;
         justify-content: space-between;
         display: flex;
         align-items: center;
         width: 100%;
-    }
+      }
     &__site-name{
         font-size: 24px;
         line-height: 24px;
-        font-weight: 600;
+        font-weight: 700;
         font-family: 'Red Hat Display', sans-serif;
-        color: #fff;
+        color: $piramy-blue;
+        transition: color .3s;
+        &--dark-mode{
+          color: $piramy-grey;
+        }
     }
     &__hamburger{
         background-color: transparent;
@@ -86,11 +101,15 @@
         display: flex;
         padding: 0;
         .line {
+            
             fill: none;
-            stroke: #fff;
+            stroke: $piramy-blue;
             stroke-width: 6;
             transition: stroke-dasharray 600ms cubic-bezier(0.4, 0, 0.2, 1),
-              stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+            stroke-dashoffset 600ms cubic-bezier(0.4, 0, 0.2, 1);
+            &--dark-mode{
+              stroke: $piramy-grey;
+            }
           }
           .line1 {
             stroke-dasharray: 60 207;
@@ -134,13 +153,22 @@
       display: flex;
       align-items: center;
       position: relative;
+      &--dark-mode{
+        input{
+          background-color: #15203a;
+        }
+        &::placeholder{
+          color: $piramy-grey;
+        }
+      }
       input{
-        padding: 4px 20px;
-        padding-left: 10px;
+        border-radius: 12px;
+        padding: 8px 60px;
+        padding-left: 20px;
         z-index: 1;
         position: relative;
         border: none;
-        font-size: 16px;
+        font-size: 14px;
         &::placeholder{
           color: #000;
         }
@@ -154,7 +182,6 @@
       position: absolute;
       background-color: transparent;
       border: none;
-
       top: 50%;
       z-index: 2;
       right: 10px;
@@ -172,8 +199,15 @@
         }
         svg{
             path{
-                stroke: #fff;
+                stroke: $piramy-blue;
             }
+        }
+        &--dark-mode{
+          svg{
+            path{
+                stroke: $piramy-grey;
+            }
+        }
         }
     }
     &__user-options{
@@ -204,9 +238,17 @@
         }
         svg{
             path{
-                fill: #fff;
+              transition: fill .3s;
+              fill: $piramy-blue;
             }
         }
+      &--dark-mode{
+        svg{
+          path{
+              fill: $piramy-grey;
+          }
+      }
+      }
     }
     @media (max-width: 768px) {
       &__search-mobile{

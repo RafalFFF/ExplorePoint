@@ -9,7 +9,6 @@ const  ContextProvider=({children})=> {
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [formType, setFormType] = useState(null);
 
-    console.log(`sidebar w kontekscie aplikacji - ${formType}`);
   return (
     <AppContext.Provider value={{darkMode,setDarkMode,sidebar, setSidebar, isModalOpen, setIsModalOpen,formType, setFormType}}>
       {children}
